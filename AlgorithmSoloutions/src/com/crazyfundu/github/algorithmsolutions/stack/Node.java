@@ -8,3 +8,5 @@ public class Node {
 		this.d=d;
 	}
 }
+
+
