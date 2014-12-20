@@ -3,21 +3,22 @@ package com.crazyfundu.github.algorithmsolutions.stack;
 import java.util.Arrays;
 
 public class Stack<E> implements IStack<E> {
-	private E[] elements = null;
-	private int top = -1;
-	private int size= 0;
+	protected E[] elements = null;
+	protected int top = -1;
+	protected int size= 0;
 	private static final int DEFAULT_CAPACITY = 10;
 
 	public Stack(){
 		this(DEFAULT_CAPACITY);
 	}
+
 	public Stack(int size){
 		if(size <0){
 			throw new IllegalArgumentException("Initial capacity cannot be negative or zero");
 		}
 		elements = (E[]) new Object[size];
 	}
-
+	
 	public void push(E element) {
 		ensureCapacity();
 		elements[top+1] = element;
@@ -37,7 +38,7 @@ public class Stack<E> implements IStack<E> {
 			return null;
 		}
 	}
-
+	
 	public E peep() {
 		if(!isEmpty()){
 			return elements[top];
@@ -61,5 +62,9 @@ public class Stack<E> implements IStack<E> {
 			//The stack has reached it's size 
 			elements = Arrays.copyOf(elements, size * 2);
 		}
+	}
+	
+	public String toString(){
+		return "The Stack is has:: "+Arrays.toString(elements) + ", size: "+size+", top: "+top;
 	}
 }
