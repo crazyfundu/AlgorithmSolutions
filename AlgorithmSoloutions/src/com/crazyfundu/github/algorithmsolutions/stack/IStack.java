@@ -20,7 +20,7 @@ public interface IStack<E> {
 	/*
 	 * Return the current size of the stack
 	 */
-	public int getSize();
+	public int size();
 	
 	/*
 	 * Check whether the Stack is empty
