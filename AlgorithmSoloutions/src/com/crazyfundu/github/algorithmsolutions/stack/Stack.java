@@ -59,7 +59,7 @@ public  class Stack<E> implements IStack<E> {
 	}
 	
 	// The method to adjust the size of the stack
-	private void ensureCapacity() {
+	 protected void ensureCapacity() {
 		if(size==elements.length){
 			//The stack has reached it's size 
 			elements = Arrays.copyOf(elements, size * 2);

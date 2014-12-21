@@ -32,6 +32,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 	 */
 	@Override
 	public void push(E element){
+		ensureCapacity();
 		if(isEmpty()){
 			this.min = element;
 			this.max = element;
