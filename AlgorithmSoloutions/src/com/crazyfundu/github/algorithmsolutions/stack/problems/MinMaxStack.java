@@ -8,10 +8,22 @@ import com.crazyfundu.github.algorithmsolutions.stack.Stack;
  *  SO(1) time. 
  */
 
-public class MinMaxStack extends Stack<Integer> implements IMinMaxStack<Integer>{
+public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
+	//E[] elements;
+	private E min;
+	private E max;
 	
-	private int min;
-	private int max;
+	public MinMaxStack(){
+		this(DEFAULT_CAPACITY);
+	}
+	
+	public MinMaxStack(int size){
+		if(size <0){
+			throw new IllegalArgumentException("Initial capacity cannot be negative or zero");
+		}
+		elements = new Object[size];
+	}
+	
 	/*
 	 * Approach 1:
 	 * For push method we can push and update the minimum/maximum value 
@@ -19,31 +31,34 @@ public class MinMaxStack extends Stack<Integer> implements IMinMaxStack<Integer>
 	 *
 	 */
 	@Override
-	public void push(Integer element){
+	public void push(E element){
 		if(isEmpty()){
 			this.min = element;
 			this.max = element;
 			elements[top+1] = element;
 			size++;
+			top++;
 		}else{
-			if(element < min){
+			if(element.compareTo(min)<0){
 				min = element;
 			}
-			if(element > max){
+			if(element.compareTo(min)>0){
 				max = element;
 			}
 			elements[top+1] = element;
 			size++;
+			top++;
 		}
 	}
 	
 	@Override
-	public Integer pop(){
+	public E pop(){
 		if(isEmpty()){
 			System.out.println("Stack is empty");
 			return null;
 		}
-		Integer temp = elements[top];
+		@SuppressWarnings("unchecked")
+		E temp = (E) elements[top];
 		if(temp == min){
 			min = resetNewMin();
 		}
@@ -53,34 +68,32 @@ public class MinMaxStack extends Stack<Integer> implements IMinMaxStack<Integer>
 		return max;
 	}
 	
-	private int resetNewMin() {
-		int tempMin = elements[0];
+	private E resetNewMin() {
+		E tempMin = (E) elements[0];
 		for (int i = 1; i < elements.length-1; i++) {
-			if(elements[i]<tempMin){
-				tempMin = elements[i];
+			if(((Comparable<E>) elements[i]).compareTo(tempMin)<0){
+				tempMin = (E) elements[i];
 			}
 		}
 		return tempMin;
 	}
 	
-	private int resetNewMax() {
-		int tempMax = elements[0];
+	private E resetNewMax() {
+		E tempMax = (E) elements[0];
 		for (int i = 1; i < elements.length-1; i++) {
-			if(elements[i]>tempMax){
-				tempMax = elements[i];
+			if(((Comparable<E>) elements[i]).compareTo(tempMax)<0){
+				tempMax = (E) elements[i];
 			}
 		}
 		return tempMax;
 	}
 
-	public int min() {
-		// TODO Auto-generated method stub
-		return 0;
+	public E min() {
+		return min;
 	}
 
-	public int max() {
-		// TODO Auto-generated method stub
-		return 0;
+	public E max() {
+		return  max;
 	}
 	
 	

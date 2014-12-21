@@ -2,11 +2,11 @@ package com.crazyfundu.github.algorithmsolutions.stack;
 
 import java.util.Arrays;
 
-public class Stack<E> implements IStack<E> {
-	protected E[] elements = null;
+public  class Stack<E> implements IStack<E> {
+	protected Object[] elements = null;
 	protected int top = -1;
 	protected int size= 0;
-	private static final int DEFAULT_CAPACITY = 10;
+	protected static final int DEFAULT_CAPACITY = 10;
 
 	public Stack(){
 		this(DEFAULT_CAPACITY);
@@ -16,7 +16,7 @@ public class Stack<E> implements IStack<E> {
 		if(size <0){
 			throw new IllegalArgumentException("Initial capacity cannot be negative or zero");
 		}
-		elements = (E[]) new Object[size];
+		elements = new Object[size];
 	}
 	
 	public void push(E element) {
@@ -25,10 +25,11 @@ public class Stack<E> implements IStack<E> {
 		size++;
 	}
 
+	@SuppressWarnings("unchecked")
 	public E pop() {
 		E element = null;
 		if(!isEmpty()){
-			element = elements[top];
+			element = (E) elements[top];
 			//Nullify the reference
 			elements[top] = null;
 			top--; size --;
@@ -39,9 +40,10 @@ public class Stack<E> implements IStack<E> {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public E peep() {
 		if(!isEmpty()){
-			return elements[top];
+			return (E) elements[top];
 		}else{
 			System.out.println("Stack is empty");
 			return null;
@@ -67,4 +69,5 @@ public class Stack<E> implements IStack<E> {
 	public String toString(){
 		return "The Stack is has:: "+Arrays.toString(elements) + ", size: "+size+", top: "+top;
 	}
+
 }
