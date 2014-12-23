@@ -23,6 +23,7 @@ public  class Stack<E> implements IStack<E> {
 		ensureCapacity();
 		elements[top+1] = element;
 		size++;
+		top++;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -51,7 +52,7 @@ public  class Stack<E> implements IStack<E> {
 	}
 
 	public int size() {
-		return top;
+		return size;
 	}
 
 	public boolean isEmpty() {
@@ -67,7 +68,7 @@ public  class Stack<E> implements IStack<E> {
 	}
 	
 	public String toString(){
-		return "The Stack is has:: "+Arrays.toString(elements) + ", size: "+size+", top: "+top;
+		return "The Stack has:: "+Arrays.toString(elements) + ", size: "+size+", top: "+top;
 	}
 
 }
