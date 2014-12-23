@@ -18,7 +18,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 	}
 	
 	public MinMaxStack(int size){
-		if(size <0){
+		if(size <= 0){
 			throw new IllegalArgumentException("Initial capacity cannot be negative or zero");
 		}
 		elements = new Object[size];
@@ -43,7 +43,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 			if(element.compareTo(min)<0){
 				min = element;
 			}
-			if(element.compareTo(min)>0){
+			if(element.compareTo(max)>0){
 				max = element;
 			}
 			elements[top+1] = element;
@@ -71,7 +71,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 	
 	private E resetNewMin() {
 		E tempMin = (E) elements[0];
-		for (int i = 1; i < elements.length-1; i++) {
+		for (int i = 1; i < top-1; i++) {
 			if(((Comparable<E>) elements[i]).compareTo(tempMin)<0){
 				tempMin = (E) elements[i];
 			}
@@ -81,8 +81,8 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 	
 	private E resetNewMax() {
 		E tempMax = (E) elements[0];
-		for (int i = 1; i < elements.length-1; i++) {
-			if(((Comparable<E>) elements[i]).compareTo(tempMax)<0){
+		for (int i = 1; i < top-1; i++) {
+			if(((Comparable<E>) elements[i]).compareTo(tempMax)>0){
 				tempMax = (E) elements[i];
 			}
 		}
@@ -90,6 +90,9 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 	}
 
 	public E min() {
+		if(isEmpty()){
+			System.out.println("The stack is empty");
+		}
 		return min;
 	}
 
