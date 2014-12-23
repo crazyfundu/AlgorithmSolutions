@@ -1,4 +1,4 @@
-package com.crazyfundu.github.algorithmsolution.stack.problems;
+package com.crazyfundu.github.algorithmsolutions.stack.problems;
 
 import static org.junit.Assert.assertEquals;
 

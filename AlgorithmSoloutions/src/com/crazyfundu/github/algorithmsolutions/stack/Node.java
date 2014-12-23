@@ -1,10 +1,10 @@
 package com.crazyfundu.github.algorithmsolutions.stack;
 
 public class Node {
-	int d;
-	Node next;
+	public int d;
+	public Node next;
 	
-	Node(int d){
+	public Node(int d){
 		this.d=d;
 	}
 }
