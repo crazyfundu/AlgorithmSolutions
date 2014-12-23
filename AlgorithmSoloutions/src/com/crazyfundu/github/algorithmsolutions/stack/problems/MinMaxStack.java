@@ -69,6 +69,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 		return max;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private E resetNewMin() {
 		E tempMin = (E) elements[0];
 		for (int i = 1; i < top-1; i++) {
@@ -79,6 +80,7 @@ public class MinMaxStack<E extends Comparable<E>> extends Stack<E>{
 		return tempMin;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private E resetNewMax() {
 		E tempMax = (E) elements[0];
 		for (int i = 1; i < top-1; i++) {
