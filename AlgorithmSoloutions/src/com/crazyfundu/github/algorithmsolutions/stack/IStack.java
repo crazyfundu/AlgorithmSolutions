@@ -19,7 +19,7 @@ public interface IStack<E> {
 	 *Reading the value from the top
 	 */
 
-	public E peep();
+	public E peek();
 	/**
 	 * Return the current size of the stack
 	 */

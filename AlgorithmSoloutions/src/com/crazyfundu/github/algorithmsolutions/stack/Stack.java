@@ -42,7 +42,7 @@ public  class Stack<E> implements IStack<E> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public E peep() {
+	public E peek() {
 		if(!isEmpty()){
 			return (E) elements[top];
 		}else{

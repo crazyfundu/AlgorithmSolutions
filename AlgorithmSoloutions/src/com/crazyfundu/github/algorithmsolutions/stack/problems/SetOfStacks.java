@@ -35,7 +35,7 @@ public class SetOfStacks {
 			listOfStacks.add(stack);
 		}else {
 			stack = listOfStacks.get(currentStackIndex);
-            if(stack.size()==THRESHOLD){
+            if(stack.size()>=THRESHOLD){
               stack = new Stack<Integer>(3);
               currentStackIndex++;
               stack.push(value);
@@ -68,7 +68,6 @@ public class SetOfStacks {
 	private int popFromTheStack(Stack<Integer> stack) {
 		int temp;
 		if(stack.size() == 1){
-
 			temp = stack.pop();
 			//nullify the reference
 			listOfStacks.remove(currentStackIndex);
