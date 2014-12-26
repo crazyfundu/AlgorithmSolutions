@@ -2,6 +2,13 @@ package com.crazyfundu.github.algorithmsolutions.tree;
 
 public class BinarySearchTree  implements ITree<Integer>{
 	public TreeNode<Integer> root =null;
+	
+	public BinarySearchTree(TreeNode<Integer> treeNode){
+		root = treeNode;
+	}
+	
+	public BinarySearchTree(){
+	}
 
 	public void add(TreeNode<Integer> node) {
 		if(root == null){
