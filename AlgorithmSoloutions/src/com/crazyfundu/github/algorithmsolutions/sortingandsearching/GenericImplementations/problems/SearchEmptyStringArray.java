@@ -9,14 +9,21 @@ public class SearchEmptyStringArray {
 	}
 	
 	public static void main(String[] args) {
-		String[] str = new String[]{"a", "", "", "" ,"b", "c", ""};
+		String[] str = new String[]{"a", "", "", "" ,"", "c", ""};
 		SearchEmptyStringArray sm = new SearchEmptyStringArray(str);
 		sm.search(str, "b", 0, str.length-1);
 	}
 
 	private void search(String[] str, String s, int l, int u) {
+		if(u < l  ){
+			System.out.println(-1);
+			return;
+		}
 		int m  = checkIfEmptyTheMove(str, l, u);
-		
+		if(m  == -1){
+			System.out.println(-1);
+			return;
+		}
 		if(s.compareTo(str[m]) ==1){
 			l = m+1;
 			search(str, s, l, u);
@@ -37,6 +44,9 @@ public class SearchEmptyStringArray {
 				m = temp;
 				while(str[m].equals("") && m < str.length){
 					m++;
+					if(str[m].equals(str[u])){
+						return -1;
+					}
 				}
 				return m;
 			}
